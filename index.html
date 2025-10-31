@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="./custom.css" rel="stylesheet">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./custom.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="mySlides fade dot">
+        <div class="numbertext">1 / 5</div>
+        <img src="./imges/img_1.jpg" style="height: 600px; width: 100%" />
+        <div class="text">Caption Text</div>
+      </div>
 
+      <div class="mySlides fade dot">
+        <div class="numbertext">2 / 5</div>
+        <img src="./imges/img_2.jpg" style="height: 600px; width: 100%" />
+        <div class="text">Caption Two</div>
+      </div>
 
-</head>
-<body>
+      <div class="mySlides fade dot">
+        <div class="numbertext">3 / 5</div>
+        <img src="./imges/img_3.jpg" style="height: 600px; width: 100%" />
+        <div class="text">Caption Three</div>
+      </div>
 
-<div class="slideshow-container">
+      <div class="mySlides fade dot">
+        <div class="numbertext">4 / 5</div>
+        <img src="./imges/img_4.jpg" style="height: 600px; width: 100%" />
+        <div class="text">Caption Two</div>
+      </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">1 / 5</div>
-  <img src="./imges/img_1.jpg" style="height: 600px; width:100%">
-  <div class="text">Caption Text</div>
-</div>
+      <div class="mySlides fade dot">
+        <div class="numbertext">5 / 5</div>
+        <img src="./imges/img_5.jpg" style="height: 600px; width: 100%" />
+        <div class="text">Caption Three</div>
+      </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">2 / 5</div>
-  <img src="./imges/img_2.jpg" style="height: 600px; width:100%; ">
-  <div class="text">Caption Two</div>
-</div>
+      <a class="prev" onclick="rightSlide(-1)">❮</a>
+      <a class="next" onclick="leftSlide(1)">❯</a>
+    </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">3 / 5</div>
-  <img src="./imges/img_3.jpg" style="height: 600px; width:100%">
-  <div class="text">Caption Three</div>
-</div>
+    <script type="text/javascript" src="./sideshow.js"></script>
+    <script>
+      let slideimage = document.getElementsByClassName("mySlides");
+      let current_img = 1;
+      showSlide(current_img);
 
-<div class="mySlides fade">
-    <div class="numbertext">4 / 5</div>
-    <img src="./imges/img_4.jpg" style="height: 600px; width:100%">
-    <div class="text">Caption Two</div>
-  </div>
-  
-  <div class="mySlides fade">
-    <div class="numbertext">5 / 5</div>
-    <img src="./imges/img_5.jpg" style="height: 600px; width:100%">
-    <div class="text">Caption Three</div>
-  </div>
-  
-<a class="prev" onclick="plusSlidesbbb(1)">❮</a>
-<a class="next" onclick="plusSlides(-1)">❯</a>
+      function leftSlide(n) {
+        if (current_img < slideimage.length) {
+          current_img = current_img + 1;
+        } else {
+          current_img = 1;
+        }
+        showSlide(current_img);
+      }
+      function rightSlide(n) {
+        if (current_img > 1) {
+          current_img = current_img - 1;
+        } else {
+          current_img = slideimage.length;
+        }
+        showSlide(current_img);
+      }
 
-</div>
+      function showSlide(n) {
+        for (i = 0; i < slideimage.length; i++) {
+          slideimage[i].style.display = "none";
+        }
 
-
-<script type="text/javascript" src="./sideshow.js"></script>
-    
-   
-
-</body>
-</html> 
+        slideimage[current_img - 1].style.display = "inline";
+      }
+    </script>
+  </body>
+</html>
